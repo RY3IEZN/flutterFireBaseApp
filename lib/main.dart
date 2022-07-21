@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterfirebase/Auth/auth_controller.dart';
 import 'package:flutterfirebase/firebase_options.dart';
 import 'package:flutterfirebase/screens/login_page.dart';
+import 'package:flutterfirebase/screens/splash_screen.dart';
 import 'package:flutterfirebase/screens/welcome_page.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: WelcomePage(),
+      home: SplashScreen(),
     );
   }
 }

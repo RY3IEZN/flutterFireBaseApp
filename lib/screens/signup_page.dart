@@ -4,13 +4,13 @@ import 'package:flutterfirebase/Auth/auth_controller.dart';
 import 'package:get/get.dart';
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+  SignUpPage({Key? key}) : super(key: key);
+
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
@@ -109,6 +109,7 @@ class SignUpPage extends StatelessWidget {
                   ),
                   child: TextField(
                     controller: passwordController,
+                    obscureText: true,
                     decoration: InputDecoration(
                       hintText: "Password",
                       prefixIcon: Icon(

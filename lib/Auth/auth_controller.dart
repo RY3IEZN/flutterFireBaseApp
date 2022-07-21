@@ -27,11 +27,12 @@ class AuthController extends GetxController {
       print("loginpage");
     } else {
       Get.offAll(
-        () => WelcomePage(),
+        () => WelcomePage(email: user.email!),
       );
     }
   }
 
+// handle register
   void register(String email, password) async {
     try {
       await auth.createUserWithEmailAndPassword(
@@ -52,6 +53,36 @@ class AuthController extends GetxController {
           style: TextStyle(color: Colors.white),
         ),
       );
+      print(e);
     }
+  }
+
+// handle login
+  void login(String email, password) async {
+    try {
+      await auth.signInWithEmailAndPassword(email: email, password: password);
+    } catch (e) {
+      Get.snackbar(
+        "About Login",
+        "Login message",
+        snackStyle: SnackStyle.FLOATING,
+        backgroundColor: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+        titleText: Text(
+          "Login failed",
+          style: TextStyle(color: Colors.white),
+        ),
+        messageText: Text(
+          e.toString(),
+          style: TextStyle(color: Colors.white),
+        ),
+      );
+      print(e);
+    }
+  }
+
+// handle signout
+  void logOut() async {
+    await auth.signOut();
   }
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfirebase/Auth/auth_controller.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+  WelcomePage({Key? key, required this.email}) : super(key: key);
+
+  String email;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class WelcomePage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const Text("unekue@gmail.com",
+          Text(email,
               style: TextStyle(
                   color: Colors.grey,
                   fontSize: 15,
@@ -55,23 +58,28 @@ class WelcomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    height: MediaQuery.of(context).size.height * 0.08,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage("asset/images/loginbtn.png"),
+                  child: GestureDetector(
+                    onTap: () {
+                      AuthController.instance.logOut();
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.5,
+                      height: MediaQuery.of(context).size.height * 0.08,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage("asset/images/loginbtn.png"),
+                        ),
                       ),
-                    ),
-                    child: const Text(
-                      "Sign Out",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                      child: const Text(
+                        "Sign Out",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ),
